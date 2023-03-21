@@ -20,13 +20,14 @@ export default function MovieList({ title, movies }: Props) {
 
   const slide = (shift: string) => {
     if (rowRef.current) {
-      const { scrollLeft, scrollWidth, offsetWidth } = rowRef.current;
+      const { scrollLeft, offsetWidth } = rowRef.current;
       const scrollTo =
         shift === "left" ? scrollLeft - offsetWidth : scrollLeft + offsetWidth;
 
       rowRef.current.scrollTo({ left: scrollTo, behavior: "smooth" });
 
       setScrollX(scrollX + scrollTo);
+      console.log(scrollX + scrollTo);
 
       if (
         Math.floor(rowRef.current.scrollWidth - rowRef.current.scrollLeft) <=
@@ -42,6 +43,7 @@ export default function MovieList({ title, movies }: Props) {
   const scrollCheck = () => {
     if (rowRef.current) {
       setScrollX(rowRef.current.scrollLeft);
+
       if (
         Math.floor(rowRef.current.scrollWidth - rowRef.current.scrollLeft) <=
         rowRef.current.offsetWidth

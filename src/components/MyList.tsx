@@ -19,7 +19,7 @@ export default function MovieList({ title, movies }: Props) {
 
   const slide = (shift: string) => {
     if (rowRef.current) {
-      const { scrollLeft, scrollWidth, offsetWidth } = rowRef.current;
+      const { scrollLeft, offsetWidth } = rowRef.current;
       const scrollTo =
         shift === "left" ? scrollLeft - offsetWidth : scrollLeft + offsetWidth;
 
