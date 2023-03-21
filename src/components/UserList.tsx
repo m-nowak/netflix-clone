@@ -13,7 +13,6 @@ type UserProps = {
     image: string;
   };
 };
-
 export default function UserList() {
   const { isLoading, isError, data, isFetching }: any = useUsers();
   const { setUser, user: loggedUser } = useUserStore();
