@@ -1,91 +1,51 @@
-import Image from 'next/image'
-import { Inter } from 'next/font/google'
-import styles from './page.module.css'
+"use client";
 
-const inter = Inter({ subsets: ['latin'] })
-
+import useInfoModalStore from "@/hooks/useInfoModalStore";
+import useUserStore from "@/hooks/useUserStore";
+import Navbar from "@/components/Navbar";
+import Banner from "@/components/Banner";
+import MovieList from "@/components/MovieList";
+import {
+  useTrending,
+  useTopRated,
+  useAction,
+  useComedy,
+  useHorror,
+  useList,
+} from "@/hooks/requests";
+import MovieInfoModal from "@/components/MovieInfoModal";
+import { useRouter } from "next/navigation";
+import { useEffect } from "react";
+import MyList from "@/components/MyList";
 export default function Home() {
+  const { isOpen, closeModal } = useInfoModalStore();
+  const { isLoggedIn, user } = useUserStore();
+  const { data: trending } = useTrending();
+  const { data: topRated } = useTopRated();
+  const { data: action } = useAction();
+  const { data: comedy } = useComedy();
+  const { data: horror } = useHorror();
+  const { data: list } = useList(user?.id);
+  const router = useRouter();
+
+  useEffect(() => {
+    !isLoggedIn ? router.push("/auth") : null;
+  }, []);
   return (
-    <main className={styles.main}>
-      <div className={styles.description}>
-        <p>
-          Get started by editing&nbsp;
-          <code className={styles.code}>src/app/page.tsx</code>
-        </p>
-        <div>
-          <a
-            href="https://vercel.com?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            By{' '}
-            <Image
-              src="/vercel.svg"
-              alt="Vercel Logo"
-              className={styles.vercelLogo}
-              width={100}
-              height={24}
-              priority
-            />
-          </a>
-        </div>
-      </div>
-
-      <div className={styles.center}>
-        <Image
-          className={styles.logo}
-          src="/next.svg"
-          alt="Next.js Logo"
-          width={180}
-          height={37}
-          priority
-        />
-        <div className={styles.thirteen}>
-          <Image src="/thirteen.svg" alt="13" width={40} height={31} priority />
-        </div>
-      </div>
-
-      <div className={styles.grid}>
-        <a
-          href="https://beta.nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={inter.className}>
-            Docs <span>-&gt;</span>
-          </h2>
-          <p className={inter.className}>
-            Find in-depth information about Next.js features and API.
-          </p>
-        </a>
-
-        <a
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={inter.className}>
-            Templates <span>-&gt;</span>
-          </h2>
-          <p className={inter.className}>Explore the Next.js 13 playground.</p>
-        </a>
-
-        <a
-          href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={inter.className}>
-            Deploy <span>-&gt;</span>
-          </h2>
-          <p className={inter.className}>
-            Instantly deploy your Next.js site to a shareable URL with Vercel.
-          </p>
-        </a>
-      </div>
-    </main>
-  )
+    <>
+      <Navbar />
+      <main className="relative pb-24">
+        <Banner />
+        <section className="md:space-y-24 relative z-10 -top-10 md:-top-14">
+          <MovieList title="Trending Now" movies={trending} />
+          <MovieList title="Top Rated" movies={topRated} />
+          <MyList title="My List" movies={list} />
+          <MovieList title="Action Thrillers" movies={action} />
+          <MovieList title="Comedies" movies={comedy} />
+          <MovieList title="Scary Movies" movies={horror} />
+          <MovieInfoModal visible={isOpen} onClose={closeModal} />
+        </section>
+      </main>
+    </>
+  );
 }
