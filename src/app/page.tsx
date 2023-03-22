@@ -36,7 +36,7 @@ export default function Home() {
       <Navbar />
       <main className="relative pb-24">
         <Banner />
-        <section className="md:space-y-24 relative z-10 -top-10 md:-top-14">
+        <section className="md:space-y-24 relative z-10 -top-10 md:-top-14 overflow-hidden">
           <MovieList title="Trending Now" movies={trending} />
           <MovieList title="Top Rated" movies={topRated} />
           <MyList title="My List" movies={list} />
