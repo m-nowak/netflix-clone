@@ -20,8 +20,8 @@ export default function Banner() {
   }, [openModal, movie?.id]);
 
   return (
-    <div className="relative flex flex-col space-y-2 h-[53vh] md:h-[65vh] lg:h-[95vh] py-16 md:space-y-4 lg:justify-end lg:pb-12">
-      <div className="absolute top-0 left-0 -z-10 h-[53vh]  md:h-[65vh] lg:h-[95vh] w-full brightness-[60%] transition duration-500">
+    <div className="relative flex flex-col space-y-2 h-[65vh]  lg:h-[95vh] py-16 md:space-y-4 lg:justify-end lg:pb-12">
+      <div className="absolute top-0 left-0 -z-10 h-[65vh] lg:h-[95vh] w-full brightness-[60%] transition duration-500">
         {movie ? (
           <Image
             src={`${process.env.NEXT_PUBLIC_BASE_URL}/${
@@ -34,7 +34,7 @@ export default function Banner() {
           />
         ) : null}
       </div>
-      <div className=" absolute top-[60%] md:top-[52%] ml-4 md:ml-16">
+      <div className=" absolute top-[52%] ml-4 md:ml-16">
         <p className="text-white text-2xl md:text-5xl h-full w-[75%] font-bold drop-shadow-xl truncate">
           {movie?.title || movie?.name || movie?.original_name}
         </p>
