@@ -110,7 +110,7 @@ export default function MovieInfoModal({ visible, onClose }: Props) {
             flex justify-center items-center fixed inset-0 overflow-y-scroll"
             >
               <Dialog.Panel>
-                <div className="relative mx-auto max-w-md md:max-w-3xl rounded-md ">
+                <div className="relative mx-auto max-w-sm md:max-w-3xl rounded-md ">
                   <m.div
                     key="panel"
                     initial={{ scale: 0 }}
