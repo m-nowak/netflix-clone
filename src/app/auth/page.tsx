@@ -11,7 +11,7 @@ export default function Auth() {
 
   useEffect(() => {
     isLoggedIn ? router.push("/") : null;
-  }, []);
+  }, [isLoggedIn]);
 
   return (
     <div className="relative h-full w-full bg-[url('/images/hero.jpg')] bg-no-repeat bg-center bg-fixed bg-cover">

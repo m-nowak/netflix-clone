@@ -30,7 +30,7 @@ export default function Home() {
 
   useEffect(() => {
     !isLoggedIn ? router.push("/auth") : null;
-  }, []);
+  }, [isLoggedIn]);
   return (
     <>
       <Navbar />
