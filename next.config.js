@@ -4,7 +4,7 @@ const nextConfig = {
     appDir: true,
   },
   images: {
-    domains: ["api.themoviedb.org", "image.tmdb.org"],
+    domains: ["api.themoviedb.org", "image.tmdb.org", "youtube.com"],
   },
 };
 
