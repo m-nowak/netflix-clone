@@ -1,6 +1,5 @@
 "use client";
 
-import useUserStore from "@/hooks/useUserStore";
 import { ChevronLeftIcon, ChevronRightIcon } from "@heroicons/react/24/outline";
 
 import { useRef, useState, useEffect } from "react";
