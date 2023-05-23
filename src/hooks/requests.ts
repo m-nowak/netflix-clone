@@ -1,7 +1,7 @@
 import { useQuery } from "@tanstack/react-query";
 import axios from "axios";
 const API_KEY = process.env.NEXT_PUBLIC_API_KEY;
-const BASE_URL = "https://api.themoviedb.org/3";
+const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL;
 const NEXT_URL = process.env.NEXT_PUBLIC_NEXT_URL;
 
 export function useNetflixOrg() {
