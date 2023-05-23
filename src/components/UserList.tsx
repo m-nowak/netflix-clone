@@ -7,15 +7,9 @@ type Props = {
   image: string;
 };
 
-type UserProps = {
-  user: {
-    name: string;
-    image: string;
-  };
-};
 export default function UserList() {
-  const { isLoading, isError, data, isFetching }: any = useUsers();
-  const { setUser, user: loggedUser } = useUserStore();
+  const { isLoading, data, isFetching }: any = useUsers();
+  const { setUser } = useUserStore();
   const router = useRouter();
 
   const handleSignIn = (user: any) => {

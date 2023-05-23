@@ -12,7 +12,7 @@ type Props = {
 const ReactQueryWrapper = ({ children }: Props) => (
   <QueryClientProvider client={queryClient}>
     {children}
-    <ReactQueryDevtools />
+    {/* <ReactQueryDevtools /> */}
   </QueryClientProvider>
 );
 
